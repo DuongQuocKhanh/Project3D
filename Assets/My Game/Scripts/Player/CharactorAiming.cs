@@ -5,7 +5,7 @@ using UnityEngine;
 public class CharactorAiming : MonoBehaviour
 {
     public float turnSpeed = 15f;
-    public float aimDuration = 0.3f;
+    //public float aimDuration = 0.3f; 
     private Camera mainCamera;
 
 
