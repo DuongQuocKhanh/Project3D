@@ -54,18 +54,11 @@ public class Zombie1 : MonoBehaviour
 
     private void PursuePlayer()
     {
-        if (zombieAgent.SetDestination(playerBody.transform.position))
+        if (zombieAgent.SetDestination(playerBody.position))
         {
             amin.SetBool("Walking", false);
             amin.SetBool("Running", true);
         }
-        else
-        {
-            amin.SetBool("Walking", false);
-            amin.SetBool("Running", false);
-        }
 
-        
-       
     }
 }
