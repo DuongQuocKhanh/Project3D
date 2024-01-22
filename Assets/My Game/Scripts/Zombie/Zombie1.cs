@@ -55,14 +55,16 @@ public class Zombie1 : MonoBehaviour
                 currentZombiePosition = 0;
             }
         }
-        transform.position = Vector3.MoveTowards(transform.position, walkPoints[currentZombiePosition].transform.position, Time.deltaTime * zombieSpeed);
-        transform.LookAt(walkPoints[currentZombiePosition].transform.position);
+        zombieAgent.SetDestination(walkPoints[currentZombiePosition].transform.position);
+        //transform.position = Vector3.MoveTowards(transform.position, walkPoints[currentZombiePosition].transform.position, Time.deltaTime * zombieSpeed);
+      
     }
 
     private void PursuePlayer()
     {
         if (zombieAgent.SetDestination(playerBody.position))
         {
+            zombieAgent.speed = 4f; // set speed 
             amin.SetBool("Walking", false);
             amin.SetBool("Running", true);
         }
