@@ -11,7 +11,10 @@ public class Zombie1 : MonoBehaviour
     public float timeAttack;
     private bool previousAttack;
     private RaycastHit hitInfo;
+    
 
+
+    public PlayerHealth playerHealth;
     public Camera cameraAttackingRaycast;
     public NavMeshAgent zombieAgent;
     public Transform lookPoint;
@@ -33,6 +36,7 @@ public class Zombie1 : MonoBehaviour
     private void Awake()
     {
         zombieAgent = GetComponent<NavMeshAgent>();
+        playerHealth = GetComponent<PlayerHealth>();
     }
 
     private void Update()
@@ -67,11 +71,15 @@ public class Zombie1 : MonoBehaviour
             zombieAgent.speed = 4f; // set speed 
             amin.SetBool("Walking", false);
             amin.SetBool("Running", true);
+            amin.SetBool("Attacking", false);
+            amin.SetBool("Die", false);
         }
         else
         {
-            amin.SetBool("Walking", true);
+            amin.SetBool("Walking", false);
             amin.SetBool("Running", false);
+            amin.SetBool("Attacking", false);
+            amin.SetBool("Die", true);
         }
         
        
@@ -87,6 +95,15 @@ public class Zombie1 : MonoBehaviour
             if (Physics.Raycast(cameraAttackingRaycast.transform.position, cameraAttackingRaycast.transform.forward, out hitInfo, attackingRadius))
             {
                 Debug.Log("Attacking" + hitInfo.transform.name);
+                playerHealth = hitInfo.transform.GetComponent<PlayerHealth>();
+                if(playerHealth != null)
+                {
+                    playerHealth.PlayerHitDamage(zombieDamge);
+                }
+
+                amin.SetBool("Walking", false);
+                amin.SetBool("Running", false);
+                amin.SetBool("Attacking", true);
             }
 
             previousAttack = true;
