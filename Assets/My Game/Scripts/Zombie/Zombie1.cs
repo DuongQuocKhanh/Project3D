@@ -72,14 +72,14 @@ public class Zombie1 : MonoBehaviour
             amin.SetBool("Walking", false);
             amin.SetBool("Running", true);
             amin.SetBool("Attacking", false);
-            amin.SetBool("Die", false);
+            
         }
         else
         {
             amin.SetBool("Walking", false);
             amin.SetBool("Running", false);
             amin.SetBool("Attacking", false);
-            amin.SetBool("Die", true);
+            
         }
         
        
