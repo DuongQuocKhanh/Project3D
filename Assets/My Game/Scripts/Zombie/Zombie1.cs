@@ -31,6 +31,7 @@ public class Zombie1 : MonoBehaviour
     public float attackingRadius;
     public bool playerInvisionRadius;
     public bool playerInattackingRadius;
+    
 
 
     private void Awake()
@@ -59,31 +60,20 @@ public class Zombie1 : MonoBehaviour
                 currentZombiePosition = 0;
             }
         }
+        //zombieAgent.speed = 1f;
         zombieAgent.SetDestination(walkPoints[currentZombiePosition].transform.position);
         //transform.position = Vector3.MoveTowards(transform.position, walkPoints[currentZombiePosition].transform.position, Time.deltaTime * zombieSpeed);
-      
     }
 
     private void PursuePlayer()
     {
+        zombieAgent.speed = 5f; // set speed 
         if (zombieAgent.SetDestination(playerBody.position))
         {
-            zombieAgent.speed = 4f; // set speed 
-            amin.SetBool("Walking", false);
             amin.SetBool("Running", true);
-            amin.SetBool("Attacking", false);
-            
-        }
-        else
-        {
             amin.SetBool("Walking", false);
-            amin.SetBool("Running", false);
             amin.SetBool("Attacking", false);
-            
         }
-        
-       
-
     }
 
     private void AttackPlayer()
@@ -96,14 +86,21 @@ public class Zombie1 : MonoBehaviour
             {
                 Debug.Log("Attacking" + hitInfo.transform.name);
                 playerHealth = hitInfo.transform.GetComponent<PlayerHealth>();
-                if(playerHealth != null)
+                if (playerHealth != null)
                 {
                     playerHealth.PlayerHitDamage(zombieDamge);
                 }
 
-                amin.SetBool("Walking", false);
                 amin.SetBool("Running", false);
+                amin.SetBool("Walking", false);
                 amin.SetBool("Attacking", true);
+            }
+            if (playerHealth.IsDead())
+            {
+                amin.SetBool("Running", true);
+                amin.SetBool("Walking", false);
+                amin.SetBool("Attacking", false);
+                zombieAgent.speed = 5f;
             }
 
             previousAttack = true;
@@ -113,6 +110,6 @@ public class Zombie1 : MonoBehaviour
 
     private void ActiveAttacking()
     {
-        previousAttack = false;
+        previousAttack = false;     
     }
 }

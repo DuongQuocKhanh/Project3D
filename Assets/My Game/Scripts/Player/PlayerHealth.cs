@@ -6,6 +6,7 @@ public class PlayerHealth : MonoBehaviour
 {
     public float currentHealth;
     public float maxHealth;
+    private bool isDead = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,14 +19,19 @@ public class PlayerHealth : MonoBehaviour
         if(currentHealth <= 0)
         {
             PlayerDie();
+            isDead = true;
         }
     }
 
     public void PlayerDie()
     {
         Cursor.lockState = CursorLockMode.None;
-        Object.Destroy(gameObject, 1.0f);
+        Object.Destroy(gameObject, 0.5f);
     }
 
+    public bool IsDead()
+    {
+        return isDead;
+    }
    
 }
