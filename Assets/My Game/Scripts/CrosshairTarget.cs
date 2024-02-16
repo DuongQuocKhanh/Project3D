@@ -7,6 +7,7 @@ public class CrosshairTarget : MonoBehaviour
     private Camera mainCamera;
     private Ray ray;
     private RaycastHit hitInfo;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,19 +17,16 @@ public class CrosshairTarget : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        ray.origin = mainCamera.transform.position;
+        ray.direction = mainCamera.transform.forward;
 
-        //ray.origin = mainCamera.transform.position;
-        //ray.direction = mainCamera.transform.forward;
         if(Physics.Raycast(ray, out hitInfo))
         {
             transform.position = hitInfo.point;
         }
         else
         {
-            transform.position = ray.origin + ray.direction * 1000; // giới hạn khoangr cách tia bắn ra
+            transform.position = ray.origin + ray.direction * 1000f; // giới hạn khoangr cách tia bắn ra
         }
-       
-       
-
     }
 }
