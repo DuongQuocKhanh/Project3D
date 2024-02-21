@@ -11,6 +11,7 @@ public class Zombie1 : MonoBehaviour
     public float timeAttack;
     private bool previousAttack;
     private RaycastHit hitInfo;
+  
     
 
 
@@ -21,6 +22,7 @@ public class Zombie1 : MonoBehaviour
     public LayerMask playerLayer;
     public Transform playerBody;
     public Animator amin;
+    
 
     public GameObject[] walkPoints;
     public float zombieSpeed;
@@ -38,6 +40,7 @@ public class Zombie1 : MonoBehaviour
     {
         zombieAgent = GetComponent<NavMeshAgent>();
         playerHealth = GetComponent<PlayerHealth>();
+       
     }
 
     private void Update()
