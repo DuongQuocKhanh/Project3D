@@ -105,7 +105,10 @@ AnimatorStateTransition:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: 
-  m_Conditions: []
+  m_Conditions:
+  - m_ConditionMode: 1
+    m_ConditionEvent: reload_weapon
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 458704324642142031}
   m_Solo: 0
@@ -435,7 +438,7 @@ AnimatorStateMachine:
     m_Position: {x: 240, y: -100, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -185415173459080926}
-    m_Position: {x: 220, y: 270, z: 0}
+    m_Position: {x: 190, y: 200, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 3927129966036773659}
     m_Position: {x: 210, y: 540, z: 0}
@@ -444,7 +447,7 @@ AnimatorStateMachine:
     m_Position: {x: 240, y: -230, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 458704324642142031}
-    m_Position: {x: 220, y: 160, z: 0}
+    m_Position: {x: 190, y: 290, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 7287501267617220495}
     m_Position: {x: 210, y: 440, z: 0}
@@ -453,7 +456,7 @@ AnimatorStateMachine:
     m_Position: {x: 520, y: -100, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -6174699087690319619}
-    m_Position: {x: 490, y: 270, z: 0}
+    m_Position: {x: 490, y: 210, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 2516557736601785446}
     m_Position: {x: 470, y: 540, z: 0}

@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static UnityEngine.Rendering.DebugUI;
@@ -82,7 +82,7 @@ public class RaycastWeapon : MonoBehaviour
 
     public void UpdateBullets(float deltaTime)
     {
-        SimulateBullets(deltaTime);
+        SimulateBullets(deltaTime); 
         DestroyBullets();
     }
 
@@ -127,14 +127,14 @@ public class RaycastWeapon : MonoBehaviour
             hitEffect.transform.forward = hitInfo.normal;
             hitEffect.Emit(1);
 
-            bullet.tracer.transform.position = hitInfo.point;
+            bullet.tracer.transform.position = hitInfo.point; // tạo ra cái tia ở vị trí bắn 
             bullet.time = maxLifeTime;
             end = hitInfo.point;
 
             var rigidbody = hitInfo.collider.GetComponent<Rigidbody>();
             if (rigidbody)
             {
-                rigidbody.AddForceAtPosition(ray.direction * 2, hitInfo.point, ForceMode.Impulse);
+                rigidbody.AddForceAtPosition(ray.direction * 20, hitInfo.point, ForceMode.Impulse); //  // *20 là độ lơn lực tác dụng vô
             }
 
             var hitBox = hitInfo.collider.GetComponent<HitBox>();
@@ -143,7 +143,6 @@ public class RaycastWeapon : MonoBehaviour
                 hitBox.OnRayCastHit(this, ray.direction);
             }
         }
-
         bullet.tracer.transform.position = end;
     }
 
