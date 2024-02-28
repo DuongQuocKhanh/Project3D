@@ -16,8 +16,8 @@ public class CharactorLocomotion : MonoBehaviour
     private Animator animator;
     private Vector2 userInput;
     private CharacterController playerController;
-    //private ActiveWeapon activeWeapon;
-    //private ReloadWeapon reloadWeapon;
+    private ActiveWeapon activeWeapon;
+    private ReloadWeapon reloadWeapon;
 
     private Vector3 rootMotion;
     private Vector3 velocity;
@@ -31,8 +31,8 @@ public class CharactorLocomotion : MonoBehaviour
         // Get references to components when the script starts
         animator = GetComponent<Animator>();
         playerController = GetComponent<CharacterController>();
-        //activeWeapon = GetComponent<ActiveWeapon>();
-        //reloadWeapon = GetComponent<ReloadWeapon>();
+        activeWeapon = GetComponent<ActiveWeapon>();
+        reloadWeapon = GetComponent<ReloadWeapon>();
     }
 
     // Update is called once per frame
@@ -56,24 +56,24 @@ public class CharactorLocomotion : MonoBehaviour
             Jump();
         }
 
-        //UpdateIsSprinting();
+        UpdateIsSprinting();
     }
 
-    //private bool IsSprinting()
-    //{
-    //    bool isSprinting = Input.GetKey(KeyCode.LeftShift);
-    //    bool isFiring = activeWeapon.IsFiring();
-    //    bool isReloading = reloadWeapon.isReloading;
-    //    bool isChangingWeapon = activeWeapon.isChangingWeapon;
-    //    return isSprinting && !isFiring && !isReloading && !isChangingWeapon;
-    //}
+    private bool IsSprinting()
+    {
+        bool isSprinting = Input.GetKey(KeyCode.LeftShift);
+        bool isFiring = activeWeapon.IsFiring();
+        bool isReloading = reloadWeapon.isReloading;
+        bool isChangingWeapon = activeWeapon.isChangingWeapon;
+        return isSprinting && !isFiring && !isReloading && !isChangingWeapon;
+    }
 
-    //private void UpdateIsSprinting()
-    //{
-    //    //bool isSprinting = IsSprinting();
-    //    animator.SetBool(isSprintingParam, isSprinting);
-    //    rigController.SetBool(isSprintingParam, isSprinting);
-    //}
+    private void UpdateIsSprinting()
+    {
+        bool isSprinting = IsSprinting();
+        animator.SetBool(isSprintingParam, isSprinting);
+        rigController.SetBool(isSprintingParam, isSprinting);
+    }
 
     private void UpdateAnimation()
     {

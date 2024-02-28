@@ -12,7 +12,7 @@ public class CharactorAiming : MonoBehaviour
     public Transform cameraLookAt;
     private Camera mainCamera;
     private Animator animator;
-    //private ActiveWeapon activeWeapon;
+    private ActiveWeapon activeWeapon;
     private int isAimingParam = Animator.StringToHash("IsAiming");
     private bool isAiming;
 
@@ -24,17 +24,20 @@ public class CharactorAiming : MonoBehaviour
         Cursor.visible = false; // Hàm ẩn con chuột
         Cursor.lockState = CursorLockMode.Locked; // Hàm khoá con chuột
         animator = GetComponent<Animator>();
-        //activeWeapon = GetComponent<ActiveWeapon>();
+        activeWeapon = GetComponent<ActiveWeapon>();
     }
     private void Update()
     {
         isAiming = Input.GetMouseButton(1);
         animator.SetBool(isAimingParam, isAiming);
 
-        //    var weapon = activeWeapon.GetActiveWeapon();0   
-        //    if (weapon != null)
-        //    {
-        //        weapon.weaponRecoil.recoilModifier = isAiming ? 0.3f : 1.0f;
+        var weapon = activeWeapon.GetActiveWeapon();
+        if (weapon != null)
+        {
+            weapon.weaponRecoil.recoilModifier = isAiming ? 0.3f : 1.0f;
+        }
+
+      
 
         //        //if (isAiming)
         //        //{
