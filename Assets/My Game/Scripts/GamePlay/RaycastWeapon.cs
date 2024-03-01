@@ -65,11 +65,20 @@ public class RaycastWeapon : MonoBehaviour
     {
         isFiring = true;
         accumulatedTime = 0f;
-        FireBullet();
         weaponRecoil.Reset();
     }
 
-    public void UpdateFiring(float deltaTime)
+    public void UpdateWeapon(float deltaTime)
+    {
+        if (isFiring)
+        {
+            UpdateFiring(deltaTime);
+        }
+
+        UpdateBullets(deltaTime);
+    }
+
+    private void UpdateFiring(float deltaTime)
     {
         accumulatedTime += deltaTime;
         float fireInterval = 1.0f / fireRate;
@@ -80,7 +89,7 @@ public class RaycastWeapon : MonoBehaviour
         }
     }
 
-    public void UpdateBullets(float deltaTime)
+    private void UpdateBullets(float deltaTime)
     {
         SimulateBullets(deltaTime); 
         DestroyBullets();
@@ -166,8 +175,10 @@ public class RaycastWeapon : MonoBehaviour
             var bullet = ObjectPool.Instance.GetPooledObject();
             bullet.Active(raycastOrigin.position, velocity);
         }
-
-        weaponRecoil.GenerateRecoil(weaponName);
+        if (weaponRecoil)
+        {
+            weaponRecoil.GenerateRecoil(weaponName);
+        }
     }
 
     public void StopFiring()

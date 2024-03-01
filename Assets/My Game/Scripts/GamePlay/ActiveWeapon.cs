@@ -31,21 +31,19 @@ public class ActiveWeapon : MonoBehaviour
     {
         var weapon = GetWeapon(activeWeaponIndex);
         bool notSprinting = rigController.GetCurrentAnimatorStateInfo(2).shortNameHash == Animator.StringToHash("notSprinting");
-        canFire = !isHolsterd && !reloadWeapon.isReloading;
+        canFire = !isHolsterd; //&& !reloadWeapon.isReloading;
 
         if (weapon != null)
         {
-            if (Input.GetButtonDown("Fire1") && canFire && !weapon.isFiring)
+            if (Input.GetButton("Fire1") && canFire && !weapon.isFiring)
             {
                 weapon.StartFiring();
             }
 
             if (weapon.isFiring && notSprinting)
             {
-                weapon.UpdateFiring(Time.deltaTime);
+                weapon.UpdateWeapon(Time.deltaTime);
             }
-
-            weapon.UpdateBullets(Time.deltaTime);
 
             if (Input.GetButtonUp("Fire1") || !canFire)
             {
