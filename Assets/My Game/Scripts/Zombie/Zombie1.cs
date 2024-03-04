@@ -68,7 +68,7 @@ public class Zombie1 : MonoBehaviour
         //transform.position = Vector3.MoveTowards(transform.position, walkPoints[currentZombiePosition].transform.position, Time.deltaTime * zombieSpeed);
     }
 
-    private void PursuePlayer()
+    private void PursuePlayer()// trạng thái rượt đuổi
     {
         zombieAgent.speed = 5f; // set speed 
         if (zombieAgent.SetDestination(playerBody.position))
@@ -79,7 +79,7 @@ public class Zombie1 : MonoBehaviour
         }
     }
 
-    private void AttackPlayer()
+    private void AttackPlayer() // trạng thái tấn công 
     {
         zombieAgent.SetDestination(transform.position);
         transform.LookAt(lookPoint);

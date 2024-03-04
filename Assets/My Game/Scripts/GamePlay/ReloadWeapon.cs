@@ -15,20 +15,9 @@ public class ReloadWeapon : MonoBehaviour
     void Start()
     {
         animationEvent.WeaponAnimEvent.AddListener(OnAnimationEvent);
-
-        //if (ListenerManager.HasInstance)
-        //{
-        //    ListenerManager.Instance.Register(ListenType.RELOAD_ANIMATION_EVENT, OnReloadAnimationEvent);
-        //}
     }
 
-    private void OnDestroy()
-    {
-        //if (ListenerManager.HasInstance)
-        //{
-        //    ListenerManager.Instance.Unregister(ListenType.RELOAD_ANIMATION_EVENT, OnReloadAnimationEvent);
-        //}
-    }
+ 
 
     void Update()
     {
