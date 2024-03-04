@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 19310186}
   - component: {fileID: 3380234}
   - component: {fileID: 2393040}
+  - component: {fileID: -7563926202391566095}
   m_Layer: 0
   m_Name: TreeCreator_Bush_A
   m_TagString: Untagged
@@ -94,6 +95,28 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &-7563926202391566095
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 196434}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4329908}
 --- !u!21 &2179674
 Material:
   serializedVersion: 8
@@ -207,6 +230,8 @@ Material:
     - _AlphaClip: 0
     - _AlphaClipThreshold: 0.33
     - _AlphaToMask: 0
+    - _BillboardKwToggle: 0
+    - _BillboardShadowFade: 0.5
     - _Blend: 0
     - _BlendModePreserveSpecular: 1
     - _BumpScale: 1
@@ -232,7 +257,7 @@ Material:
     - _QueueOffset: 0
     - _ReceiveShadows: 1
     - _ShadowOffsetScale: 1
-    - _ShadowStrength: 0.9
+    - _ShadowStrength: 1
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
@@ -243,6 +268,7 @@ Material:
     - _SubsurfaceKwToggle: 0
     - _Surface: 0
     - _TranslucencyViewDependency: 0.7
+    - _TwoSided: 2
     - _WINDQUALITY: 4
     - _WindQuality: 1
     - _WorkflowMode: 1
@@ -370,6 +396,8 @@ Material:
     - _AlphaClipThreshold: 0.33
     - _AlphaToMask: 0
     - _BaseLight: 0.35
+    - _BillboardKwToggle: 0
+    - _BillboardShadowFade: 0.5
     - _Blend: 0
     - _BlendModePreserveSpecular: 1
     - _BumpScale: 1
@@ -403,6 +431,7 @@ Material:
     - _SubsurfaceIndirect: 0.25
     - _SubsurfaceKwToggle: 0
     - _Surface: 0
+    - _TwoSided: 2
     - _WINDQUALITY: 4
     - _WindQuality: 0
     - _WorkflowMode: 1
