@@ -1,0 +1,58 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class ScreenHome : BaseScreen
+{
+    public override void Init()
+    {
+        base.Init();
+    }
+
+    public override void Show(object data)
+    {
+        base.Show(data);
+
+        if (AudioManager.HasInstance)
+        {
+            AudioManager.Instance.PlayBGM(AUDIO.BGM_BGM_3);
+        }
+    }
+
+    public override void Hide()
+    {
+        base.Hide();
+    }
+
+    public void OnClickSettingButton()
+    {
+        if (UIManager.HasInstance)
+        {
+            UIManager.Instance.ShowPopup<PopupSetting>();
+        }
+    }
+
+    public void OnClickHelpButton()
+    {
+        if (UIManager.HasInstance)
+        {
+            UIManager.Instance.ShowPopup<PopupHelp>();
+        }
+    }
+
+    public void OnClickStartButton()
+    {
+        if (UIManager.HasInstance)
+        {
+            UIManager.Instance.ShowNotify<NotifyLoadingGame>();
+        }
+
+        Hide();
+    }
+
+    public void OnclickExitButton()
+    {
+        Application.Quit();
+    }
+ 
+}

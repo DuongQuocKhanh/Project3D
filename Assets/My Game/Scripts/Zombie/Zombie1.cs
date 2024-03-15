@@ -7,7 +7,7 @@ using UnityEngine.Rendering.UI;
 
 public class Zombie1 : MonoBehaviour
 {
-    public float zombieDamge = 5f;
+    public float zombieDamge ;
     public float timeAttack;
     private bool previousAttack;
     private RaycastHit hitInfo;
@@ -48,9 +48,10 @@ public class Zombie1 : MonoBehaviour
         playerInvisionRadius = Physics.CheckSphere(transform.position, visionRadius, playerLayer);
         playerInattackingRadius = Physics.CheckSphere(transform.position, attackingRadius, playerLayer);
 
-        if (!playerInvisionRadius && !playerInattackingRadius) Guard();
-        if (playerInvisionRadius && !playerInattackingRadius) PursuePlayer();
-        if (playerInvisionRadius && playerInattackingRadius) AttackPlayer();
+        if (!playerInvisionRadius && !playerInattackingRadius ) Guard();
+        if (playerInvisionRadius && !playerInattackingRadius ) PursuePlayer();
+        if (playerInvisionRadius && playerInattackingRadius ) AttackPlayer();
+        
     }
 
     private void Guard() // trạng thái chuẩn bị tấn công
@@ -76,35 +77,44 @@ public class Zombie1 : MonoBehaviour
             amin.SetBool("Running", true);
             amin.SetBool("Walking", false);
             amin.SetBool("Attacking", false);
-        }
+            
+        } 
     }
 
     private void AttackPlayer() // trạng thái tấn công 
     {
         zombieAgent.SetDestination(transform.position);
         transform.LookAt(lookPoint);
-        if (!previousAttack)
+
+        if (!previousAttack )
         {
             if (Physics.Raycast(cameraAttackingRaycast.transform.position, cameraAttackingRaycast.transform.forward, out hitInfo, attackingRadius))
             {
                 Debug.Log("Attacking" + hitInfo.transform.name);
-                playerHealth = hitInfo.transform.GetComponent<PlayerHealth>();
+                playerHealth = hitInfo.collider.GetComponent<PlayerHealth>();
                 if (playerHealth != null)
                 {
                     playerHealth.PlayerHitDamage(zombieDamge);
+                    playerHealth.OnHealth(zombieDamge);
                 }
 
                 amin.SetBool("Running", false);
                 amin.SetBool("Walking", false);
                 amin.SetBool("Attacking", true);
+
             }
-            if (playerHealth.IsDead())
+            if(playerHealth != null)
             {
-                amin.SetBool("Running", true);
-                amin.SetBool("Walking", false);
-                amin.SetBool("Attacking", false);
-                zombieAgent.speed = 5f;
+                if (playerHealth.IsDead())
+                {
+                    amin.SetBool("Running", false);
+                    amin.SetBool("Walking", true);
+                    amin.SetBool("Attacking", false);
+                    zombieAgent.speed = 5f;
+                }
             }
+           
+
 
             previousAttack = true;
             Invoke(nameof(ActiveAttacking), timeAttack);
@@ -115,4 +125,6 @@ public class Zombie1 : MonoBehaviour
     {
         previousAttack = false;     
     }
+
+  
 }

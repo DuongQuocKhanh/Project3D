@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1198013931869722033}
   - component: {fileID: 7952350876643382647}
   - component: {fileID: 6059370460067899429}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Sparks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4851,7 +4851,7 @@ GameObject:
   - component: {fileID: 3208487542095203896}
   - component: {fileID: 5481233013361602499}
   - component: {fileID: 8725685058731069640}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Decal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9617,7 +9617,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 094e76e620df5714eb3946120657e1f6, type: 2}
+  - {fileID: 2100000, guid: d1cd8b9b3c7d785469e17f97b682c90a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -9681,7 +9681,7 @@ GameObject:
   - component: {fileID: 6727173145863249166}
   - component: {fileID: 5820002403105921496}
   - component: {fileID: 7030157413070106980}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Bullet_Shell1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9764,7 +9764,7 @@ GameObject:
   - component: {fileID: 4976657888859368202}
   - component: {fileID: 8207041339670350740}
   - component: {fileID: 6606829493651541996}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ShotGun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9847,7 +9847,7 @@ GameObject:
   - component: {fileID: 6703289860532626003}
   - component: {fileID: 8106797777991600096}
   - component: {fileID: 69079375407549161}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: MuzzleFlash01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14677,7 +14677,7 @@ GameObject:
   - component: {fileID: 9082590375892489455}
   - component: {fileID: 6076095618306834794}
   - component: {fileID: 5318631207025760776}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: FlashHeadon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19505,7 +19505,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3802311456284983465}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Bullet ShotGun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19540,7 +19540,7 @@ GameObject:
   - component: {fileID: 6482940974828210370}
   - component: {fileID: 6653679271772324428}
   - component: {fileID: 8015089709464504632}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: HitEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24319,7 +24319,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1402721190994cd46b64bf7cba78f5d8, type: 2}
+  - {fileID: 2100000, guid: eb2412df5134fe749b8468bef9340100, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -24381,7 +24381,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9030067356693276899}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: RaycastOrigin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24414,7 +24414,7 @@ GameObject:
   - component: {fileID: 6321722745103267795}
   - component: {fileID: 7747394309976105597}
   - component: {fileID: 7269966496262938807}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Dust
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29251,7 +29251,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8387824466989935834}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Effect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29288,7 +29288,7 @@ GameObject:
   - component: {fileID: 5404535338888833802}
   - component: {fileID: 288337117332483563}
   - component: {fileID: 2829299007267420019}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Bullet1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29373,7 +29373,7 @@ GameObject:
   - component: {fileID: -9188923478637063838}
   - component: {fileID: 8643894485794449676}
   - component: {fileID: 5372930875237373381}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: WeaponShotGun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29410,6 +29410,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16b1c94d9b2c34b4aba7ae4e94924d11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  equipWeaponBy: 1
   weaponSlot: 1
   weaponName: shotgun
   raycastOrigin: {fileID: 9030067356693276899}
@@ -29422,7 +29423,7 @@ MonoBehaviour:
   isFiring: 0
   fireRate: 1
   bulletSpeed: 1000
-  bulletDrop: 100
+  bulletDrop: 300
   weaponRecoil: {fileID: 0}
   magazine: {fileID: 4349965736953409325}
   ammoCount: 15
@@ -29448,8 +29449,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 0
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.20844185, y: 0.4957329, z: 1.8287908}
+  m_Center: {x: -0.0011536628, y: 0.03743103, z: 0.8978794}
 --- !u!114 &8643894485794449676
 MonoBehaviour:
   m_ObjectHideFlags: 0

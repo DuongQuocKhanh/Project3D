@@ -5,6 +5,7 @@ using static UnityEngine.Rendering.DebugUI;
 
 public class RaycastWeapon : MonoBehaviour
 {
+    public EquipWeaponBy equipWeaponBy;
     public WeaponSlot weaponSlot;
     public string weaponName;
     public Transform raycastOrigin;
@@ -28,9 +29,16 @@ public class RaycastWeapon : MonoBehaviour
     public int magazineSize;
     public float damageAmount = 10f;
 
+    
+
+    
+    
+
     private void Awake()
     {
         weaponRecoil = GetComponent<WeaponRecoil>();
+        
+        
     }
 
     private Vector3 GetPosition(Bullet bullet)
@@ -59,6 +67,12 @@ public class RaycastWeapon : MonoBehaviour
             magazineSize--;
             ammoCount = totalAmmo;
         }
+
+
+        if (ListenerManager.HasInstance)
+        {
+            ListenerManager.Instance.BroadCast(ListenType.UPDATE_AMMO, this);
+        }
     }
 
     public void StartFiring()
@@ -68,23 +82,23 @@ public class RaycastWeapon : MonoBehaviour
         weaponRecoil.Reset();
     }
 
-    public void UpdateWeapon(float deltaTime)
+    public void UpdateWeapon(float deltaTime , Vector3 target)
     {
         if (isFiring)
         {
-            UpdateFiring(deltaTime);
+            UpdateFiring(deltaTime , target);
         }
 
         UpdateBullets(deltaTime);
     }
 
-    private void UpdateFiring(float deltaTime)
+    private void UpdateFiring(float deltaTime , Vector3 target)
     {
         accumulatedTime += deltaTime;
         float fireInterval = 1.0f / fireRate;
         while (accumulatedTime >= 0f)
         {
-            FireBullet();
+            FireBullet(target);
             accumulatedTime -= fireInterval;
         }
     }
@@ -146,16 +160,24 @@ public class RaycastWeapon : MonoBehaviour
                 rigidbody.AddForceAtPosition(ray.direction * 20, hitInfo.point, ForceMode.Impulse); //  // *20 là độ lơn lực tác dụng vô
             }
 
-            var hitBox = hitInfo.collider.GetComponent<HitBox>();
+
+            //var hitBox = hitInfo.collider.GetComponent<HitBox>();
+            //if (hitBox)
+            //{
+            //    hitBox.OnRayCastHit(this, ray.direction);
+            //}
+
+
+            var hitBox = hitInfo.collider.GetComponent<ZombieHealth>();
             if (hitBox)
             {
-                hitBox.OnRayCastHit(this, ray.direction);
+                hitBox.ZombieHitDamage(damageAmount);
             }
         }
         bullet.tracer.transform.position = end;
     }
 
-    private void FireBullet()
+    private void FireBullet(Vector3 target)
     {
         print($"Current Ammo: {ammoCount} - Current MagazineSize: {magazineSize}");
 
@@ -166,9 +188,14 @@ public class RaycastWeapon : MonoBehaviour
 
         ammoCount--;
 
+        if (ListenerManager.HasInstance)
+        {
+            ListenerManager.Instance.BroadCast(ListenType.UPDATE_AMMO, this);
+        }
+
         PlayEffect();
 
-        Vector3 velocity = (raycastDestination.position - raycastOrigin.position).normalized * bulletSpeed;
+        Vector3 velocity = (target - raycastOrigin.position).normalized * bulletSpeed;
 
         if (ObjectPool.HasInstance)
         {

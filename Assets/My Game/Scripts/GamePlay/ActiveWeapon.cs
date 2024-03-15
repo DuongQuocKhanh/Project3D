@@ -42,7 +42,7 @@ public class ActiveWeapon : MonoBehaviour
 
             if (weapon.isFiring && notSprinting)
             {
-                weapon.UpdateWeapon(Time.deltaTime);
+                weapon.UpdateWeapon(Time.deltaTime , crossHairTarget.position);
             }
 
             if (Input.GetButtonUp("Fire1") || !canFire)
@@ -103,16 +103,22 @@ public class ActiveWeapon : MonoBehaviour
             Destroy(weapon.gameObject);
         }
         weapon = newWeapon;
-        weapon.raycastDestination = crossHairTarget;
+        //weapon.raycastDestination = crossHairTarget;
         weapon.weaponRecoil.characterAiming = chacracterAiming;
         weapon.weaponRecoil.rigController = rigController;
         weapon.transform.SetParent(weaponSlots[weaponSlotIndex], false);
         rigController.Play("equip_" + weapon.weaponName);
-
+        weapon.equipWeaponBy = EquipWeaponBy.Player;
         equippedWeapons[weaponSlotIndex] = weapon;
         activeWeaponIndex = weaponSlotIndex;
 
         SetActiveWeapon(newWeapon.weaponSlot);
+
+
+        if (ListenerManager.HasInstance)
+        {
+            ListenerManager.Instance.BroadCast(ListenType.UPDATE_AMMO, weapon);
+        }
     }
 
     private void ToggleActiveWeapon()
@@ -180,7 +186,42 @@ public class ActiveWeapon : MonoBehaviour
                 yield return new WaitForEndOfFrame();
             } while (rigController.GetCurrentAnimatorStateInfo(0).normalizedTime < 1.0f);
             isHolsterd = false;
+
+
+            if (ListenerManager.HasInstance)
+            {
+                ListenerManager.Instance.BroadCast(ListenType.UPDATE_AMMO, weapon);
+            }
         }
         isChangingWeapon = false;
     }
+
+    public void DropWeapon()
+    {
+        var currentWeapon = GetActiveWeapon();
+
+        if (currentWeapon)
+        {
+            currentWeapon.transform.SetParent(null);
+            currentWeapon.gameObject.GetComponent<BoxCollider>().enabled = true;
+            currentWeapon.gameObject.AddComponent<Rigidbody>();
+            equippedWeapons[activeWeaponIndex] = null;
+        }
+       
+    }
+
+    public void RefillMagazine(int size)
+    {
+        var weapon = GetActiveWeapon();
+        if (weapon)
+        {
+            weapon.magazineSize += size;
+            if (ListenerManager.HasInstance)
+            {
+                ListenerManager.Instance.BroadCast(ListenType.UPDATE_AMMO, weapon);
+            }
+        }
+    }
+
+
 }
