@@ -7,7 +7,6 @@ public class Victory : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        
         DOVirtual.DelayedCall(1f, () =>
         {
             if (UIManager.HasInstance)
@@ -16,5 +15,9 @@ public class Victory : MonoBehaviour
                 UIManager.Instance.ShowPopup<PopupMessage>(data: message);
             }
         });
+        if (CameraManager.HasInstance)
+        {
+            CameraManager.Instance.ResetKillCam();
+        }
     }
 }
