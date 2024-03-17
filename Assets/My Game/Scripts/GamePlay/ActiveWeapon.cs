@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -198,16 +198,19 @@ public class ActiveWeapon : MonoBehaviour
 
     public void DropWeapon()
     {
-        var currentWeapon = GetActiveWeapon();
 
-        if (currentWeapon)
+        for (int i = 0; i < equippedWeapons.Length; i++)
         {
-            currentWeapon.transform.SetParent(null);
-            currentWeapon.gameObject.GetComponent<BoxCollider>().enabled = true;
-            currentWeapon.gameObject.AddComponent<Rigidbody>();
-            equippedWeapons[activeWeaponIndex] = null;
+            var currentWeapon = equippedWeapons[i];
+
+            if (currentWeapon)
+            {
+                currentWeapon.transform.SetParent(null);
+                currentWeapon.gameObject.GetComponent<BoxCollider>().enabled = true;
+                currentWeapon.gameObject.AddComponent<Rigidbody>();
+                equippedWeapons[i] = null;
+            }
         }
-       
     }
 
     public void RefillMagazine(int size)

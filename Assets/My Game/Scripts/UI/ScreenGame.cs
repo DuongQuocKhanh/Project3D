@@ -10,8 +10,8 @@ public class ScreenGame : BaseScreen
 {
     [SerializeField] private TextMeshProUGUI ammoText;
     [SerializeField] private TextMeshProUGUI magazineText;
-    [SerializeField] private TextMeshProUGUI healthText;
-    [SerializeField] private Slider sliderHealth;
+
+
 
 
     private PlayerHealth playerHealth;
@@ -34,21 +34,26 @@ public class ScreenGame : BaseScreen
     {
         base.Show(data);
 
-            if (ListenerManager.HasInstance)
+        if (ListenerManager.HasInstance)
         {
             ListenerManager.Instance.Register(ListenType.UPDATE_AMMO, OnUpdateAmmo);
         }
-       
+
+        
+
+
+
     }
 
     public override void Hide()
     {
-        base.Hide();
 
+        base.Hide();
         if (ListenerManager.HasInstance)
         {
             ListenerManager.Instance.Unregister(ListenType.UPDATE_AMMO, OnUpdateAmmo);
         }
+        
 
     }
     
@@ -65,17 +70,7 @@ public class ScreenGame : BaseScreen
         }
     }
 
-    public void SetMaxHealth(float health)
-    {
-        sliderHealth.maxValue = health;
-        sliderHealth.value = health;
 
-    }
-
-    public void SetHealth(float health)
-    {
-        sliderHealth.value = health;
-    }
 
 
 

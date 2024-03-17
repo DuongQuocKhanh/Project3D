@@ -4,8 +4,11 @@
 	  public const string BGM_BGM_2 = "bgm_2";
 	  public const string BGM_BGM_3 = "bgm_3";
 	  public const string BGM_BMG_4 = "bmg_4";
-	
-	  public const string SE_ACTIVEWEAPON = "ActiveWeapon";
+      public const string BGM_BMG_5 = "DangerZone";
+
+
+
+    public const string SE_ACTIVEWEAPON = "ActiveWeapon";
 	  public const string SE_BTNCLICK = "BtnClick";
 	  public const string SE_BTNHOVER = "BtnHover";
 	  public const string SE_EJECTMAGAZINE = "EjectMagazine";
@@ -20,4 +23,10 @@
 	  public const string SE_PISTOLCOCKING = "PistolCocking";
 	  public const string SE_PISTOLRELOAD = "PistolReload";
 	  public const string SE_TAKEOUTMAGAZINE = "TakeOutMagazine";
+      public const string SE_AKM = "GunMachineGunnnn";
+      public const string SE_SHOTGUN = "GunMachineGunn";
+      public const string SE_HURT = "PlayerHurt";
+      public const string SE_HURTZB = "ZombieHurt";
+      public const string SE_AMMOPICK = "AmmoPickup";
+      public const string SE_HEALTHPICK = "HealthPickup";
 }

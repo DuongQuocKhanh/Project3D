@@ -26,6 +26,12 @@ public class ZombieHealth : MonoBehaviour
     public void ZombieHitDamage(float takedamage)
     {
         currentHealth -= takedamage;
+
+        if (AudioManager.HasInstance)
+        {
+            AudioManager.Instance.PlaySE(AUDIO.SE_HURTZB);
+        }
+        
         if (currentHealth <= 0)
         {
            

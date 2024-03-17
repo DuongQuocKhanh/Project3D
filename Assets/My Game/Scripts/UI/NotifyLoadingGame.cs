@@ -58,7 +58,7 @@ public class NotifyLoadingGame : BaseNotify
                                 UIManager.Instance.ShowScreen<ScreenGame>();
                                 if (AudioManager.HasInstance)
                                 {
-                                    AudioManager.Instance.PlayBGM(AUDIO.BGM_BMG_4);
+                                    AudioManager.Instance.PlayBGM(AUDIO.BGM_BMG_5);
                                 }
                             });
                     }

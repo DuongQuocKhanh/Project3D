@@ -107,10 +107,15 @@ public class Zombie1 : MonoBehaviour
             {
                 if (playerHealth.IsDead())
                 {
-                    amin.SetBool("Running", false);
-                    amin.SetBool("Walking", true);
-                    amin.SetBool("Attacking", false);
+                    attackingRadius = 0f;
+                    playerInattackingRadius = false;
+                    visionRadius = 0f;
+                    playerInvisionRadius = false;
                     zombieAgent.speed = 5f;
+                    amin.SetBool("Running", true);
+                    amin.SetBool("Walking", false);
+                    amin.SetBool("Attacking", false);
+                    
                 }
             }
            

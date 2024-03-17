@@ -60,10 +60,7 @@ public class GameManager : BaseManager<GameManager>
                 });
         }
 
-        if (CameraManager.HasInstance)
-        {
-            CameraManager.Instance.ResetKillCam();
-        }
+        
     }
 
     public void LoadScene(string sceneName)

@@ -8,11 +8,16 @@ public class AmmoPickup : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (AudioManager.HasInstance)
+        {
+            AudioManager.Instance.PlaySE(AUDIO.SE_AMMOPICK);
+        }
         ActiveWeapon playerWeapon = other.GetComponent<ActiveWeapon>();
         if (playerWeapon)
         {
             playerWeapon.RefillMagazine(magazineSize);
             Destroy(this.gameObject);
         }
+       
     }
 }

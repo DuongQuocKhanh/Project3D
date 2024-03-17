@@ -45,7 +45,10 @@ public class PlayerHealth : MonoBehaviour
     public void PlayerHitDamage(float takedamage)
     {
         currentHealth -= takedamage;
-        
+        if (AudioManager.HasInstance)
+        {
+            AudioManager.Instance.PlaySE(AUDIO.SE_HURT);
+        }
 
         if (currentHealth <= 0)
         {
@@ -65,11 +68,7 @@ public class PlayerHealth : MonoBehaviour
     public void PlayerDie()
     {
        
-        if (CameraManager.HasInstance)
-        {
-            CameraManager.Instance.EnableKillCam();
-        }
-
+       
         DOVirtual.DelayedCall(2f, () =>
         {
             if (UIManager.HasInstance)

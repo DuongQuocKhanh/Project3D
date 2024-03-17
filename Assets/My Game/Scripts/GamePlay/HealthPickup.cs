@@ -11,11 +11,17 @@ public class HealthPickup : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (AudioManager.HasInstance)
+        {
+            AudioManager.Instance.PlaySE(AUDIO.SE_HEALTHPICK);
+        }
+
         PlayerHealth health = other.GetComponent<PlayerHealth>();
         if (health)
         {
             health.TakeHealth(healthPickup);
             Destroy(this.gameObject);
         }
+       
     }
 }

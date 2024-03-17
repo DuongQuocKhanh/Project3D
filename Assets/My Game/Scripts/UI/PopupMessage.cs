@@ -7,6 +7,8 @@ public class PopupMessage : BasePopup
 {
     public TextMeshProUGUI txtMessage;
 
+    
+
     public override void Init()
     {
         base.Init();
